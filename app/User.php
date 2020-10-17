@@ -36,4 +36,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function comment()
+    {
+        return $this->hasManyThrough(Comment::class, Post::class);
+
+    }
+
 }
