@@ -11,10 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
+
+Route::get('/', 'PostController@list')->name('list.post');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/post', 'PostController@index')->name('post');
+Route::get('/user', 'UserController@index')->name('user');
+Route::get('/guest-comment', 'CommentController@index')->name('comment.guest');
+Route::get('/comment/{id}', 'CommentController@create')->name('comment.create');
+Route::post('/comment', 'CommentController@store')->name('comment.store');

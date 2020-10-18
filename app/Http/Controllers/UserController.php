@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,10 +18,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::with('comment')->orderBy('created_at', 'DESC');
+        $users = User::with('comment')->orderBy('created_at', 'DESC')->get();
 
-        return response()->json(['status' => 'success', 'data' => $user]);
-
+        return view('page.user.user', compact('users'));
     }
 
     /**

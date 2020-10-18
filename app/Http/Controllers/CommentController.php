@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use Illuminate\Http\Request;
+use DB;
 
 class CommentController extends Controller
 {
@@ -14,10 +15,14 @@ class CommentController extends Controller
      */
     public function index()
     {
-        $comment = Comment::whereNotIn('user')->orderBy('created_at', 'DESC');
+        // $comments = Comment::whereNotIn('name', DB::table('users')->pluck('name'))
+        //                     ->whereNotIn('email', DB::table('users')->pluck('email'))
+        //                     ->orderBy('created_at', 'DESC')->get();
 
-        return response()->json(['status' => 'success', 'data' => $comment]);
+        // $comments = Comment::with('hasUser')->orderBy('created_at', 'DESC')->get();
+        $comments = Comment::all();
 
+        return view('page.comment.comment', compact('comments'));
     }
 
     /**
@@ -25,9 +30,13 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create(Request $request)
+    {   
+        $post_id = $request->id;
+
+        return view('page.comment.form',[
+            'post_id' => $post_id,
+        ]);
     }
 
     /**
@@ -37,8 +46,16 @@ class CommentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {        
+        try {
+            
+            $pelajar = Comment::create($request->all());
+
+            return \Redirect::route('list.post')->with(['success' => 'Komentar Berhasil disimpan !']);
+
+        } catch (\Exception $e) {
+            return \Redirect::route('list.post')->with(['error' => 'Komentar Gagal disimpan !']);
+        }
     }
 
     /**
