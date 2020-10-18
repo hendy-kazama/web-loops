@@ -17,7 +17,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" required>
+                                <input id="name" type="text" class="form-control" name="name" {{ $name ? 'disabled' : '' }} value="{{$name}}" required>
                             </div>
                         </div>
 
@@ -25,7 +25,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" required>
+                                <input id="email" type="email" class="form-control" name="email" {{ $email ? 'disabled' : '' }} value="{{$email}}" required>
                             </div>
                         </div>
 

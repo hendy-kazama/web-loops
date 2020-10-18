@@ -15,12 +15,12 @@ class CommentController extends Controller
      */
     public function index()
     {
-        // $comments = Comment::whereNotIn('name', DB::table('users')->pluck('name'))
-        //                     ->whereNotIn('email', DB::table('users')->pluck('email'))
-        //                     ->orderBy('created_at', 'DESC')->get();
+        $comments = Comment::whereNotIn('name', DB::table('users')->pluck('name'))
+                            ->whereNotIn('email', DB::table('users')->pluck('email'))
+                            ->orderBy('created_at', 'DESC')->get();
 
         // $comments = Comment::with('hasUser')->orderBy('created_at', 'DESC')->get();
-        $comments = Comment::all();
+        // $comments = Comment::all();
 
         return view('page.comment.comment', compact('comments'));
     }
@@ -33,9 +33,12 @@ class CommentController extends Controller
     public function create(Request $request)
     {   
         $post_id = $request->id;
-
+        $user = $request->user();
+        
         return view('page.comment.form',[
             'post_id' => $post_id,
+            'name' => ($user) ? $user->name : null,
+            'email' => ($user) ? $user->email : null,
         ]);
     }
 
