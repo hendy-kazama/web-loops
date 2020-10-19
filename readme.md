@@ -9,13 +9,14 @@
 ##  jawaban Soal
 
 8. Aplikasi ini dibuat dengan menggunakan bahasa pemrograman PHP dengan menggunakan framerok laravel dan mengguanakan arsitektur Model-View-Controller(MVC), Arsitektur MVC bertujuan untuk memenuhi single responsibility principle (SRP), yaitu memisahkan komponen berdasarkan tugasnya masing-masing dengan demikian pembagian tugas nya adalah :
-1. Model bertugas untuk menangani pengolahan data yang dapat berhubungan langsung dengan database.
-2. View bertugas untuk menangani pengolahan tampilan kepada pengguna seperti template HTML.
-3. Controller bertugas untuk mengatur hubungan antara bagian model dan bagian view.
+- Model bertugas untuk menangani pengolahan data yang dapat berhubungan langsung dengan database.
+- View bertugas untuk menangani pengolahan tampilan kepada pengguna seperti template HTML.
+- Controller bertugas untuk mengatur hubungan antara bagian model dan bagian view.
 
 Aplikasi ini telah dikembangkan dengan beberapa fitur yaitu Blade Template Engine, Database Migrations, Model Factory, Observers, Seeder dan Authentication
 
 9. Kekurangan Aplikasi ini dengan aspek :
+
 a. Fitur
 
 Fitur yang ada di aplikasi ini belum lengkap, seperti belum ada CRUD pada setiap model. 
