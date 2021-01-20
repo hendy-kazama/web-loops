@@ -27,7 +27,3 @@ b. Performa
 
 Laravel relatif lebih berat bila dibanding dengan framework Codeigniter. Karena laravel meload banyak file dan asset untuk menjalankan aplikasinya
 
-c. Kualitas Kode
-
-- 
-
